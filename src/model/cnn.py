@@ -31,7 +31,7 @@ data_gen = ImageDataGenerator(rescale=1./255,
 data_test_gen = ImageDataGenerator(rescale=1./255)
 
 # load and iterate training dataset
-train_gen = data_gen.flow_from_directory(directory='./data/plant-pathology-2020-fgvc7/train',
+train_gen = data_gen.flow_from_directory(directory='./data/train',
                                          target_size=(IMG_WIDTH,IMG_HEIGHT),
                                          class_mode='categorical',
                                          color_mode='rgb',
@@ -39,7 +39,7 @@ train_gen = data_gen.flow_from_directory(directory='./data/plant-pathology-2020-
                                          shuffle=True,
                                          seed=42)
 # load and iterate training dataset
-validation_gen = data_test_gen.flow_from_directory(directory='./data/plant-pathology-2020-fgvc7/validation',
+validation_gen = data_test_gen.flow_from_directory(directory='./data/validation',
                                          target_size=(IMG_WIDTH,IMG_HEIGHT),
                                          class_mode='categorical',
                                          color_mode='rgb',
@@ -47,7 +47,7 @@ validation_gen = data_test_gen.flow_from_directory(directory='./data/plant-patho
                                          shuffle=False,
                                          seed=42)
 #load and iterate test dataset
-test_gen = data_gen.flow_from_directory(directory='./data/plant-pathology-2020-fgvc7/test',
+test_gen = data_gen.flow_from_directory(directory='./data/test',
                                         target_size=(IMG_WIDTH,IMG_HEIGHT),
                                         class_mode='categorical',
                                         color_mode='rgb',
