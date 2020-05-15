@@ -1,0 +1,9 @@
+.idea/
+__pycache__/
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+requirements.txt
+notebooks/*.png
+
+data/*
+!data/README.md
