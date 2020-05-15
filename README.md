@@ -8,9 +8,9 @@ The repository visibility is on private, and should not be shared before the end
 
 Here is a sample of the actual images in the dataset :
 
-<img src="https://storage.googleapis.com/kaggle-competitions/kaggle/18648/logos/header.png?t=2020-02-20-17-30-35">
+![A sample of the Plant Pathology 2020 dataset](https://storage.googleapis.com/kaggle-competitions/kaggle/18648/logos/header.png)
 
-<small><small>Description: A sample of the Plant Pathology 2020 dataset [here is the source](https://www.cs.toronto.edu/~kriz/cifar.html)</small></small>
+<sub><sup>Source: https://www.kaggle.com/c/plant-pathology-2020-fgvc7</sup></sub>
 
 ### Quick Start
 
@@ -55,33 +55,49 @@ Feel free to read the notebook plant_pathology.ipynb, it contains all the inform
 Here is a list of commands that you can use to manipulate files, and processes around the project:
 
 ```shell script
-# Tensorboard
-python -m tools.tb # look for generated models
+### COMMON TOOLS ###
 
-# Requirements
-python -m tools.refresh_req # refresh the requirements.txt file from the current Anaconda environment's packages
+# This python command allows you to launch tensorboard in your browser
+python -m tools.tb
 
-# Purge checkpoints
-python -m tools.purge_cp # If you want to purge the checkpoints folder, you can launch:
+# This python command allows you to refresh the requirements.txt file from the current Anaconda environment's packages
+python -m tools.refresh_req
 
-# Purge model
+# This python command allows you to evaluate models
+#   e.g 'python -m tools.eval_models 100 mlp' => evaluate the 100 first mlp models
+#   e.g 'python -m tools.eval_models mlp' => evaluate all mlp models
+python -m tools.eval_models [number_of_models] [model_name]
+
+# This python command allows you to purge all files related to trained models
+python -m tools.purge_all
+
+# This python command allows you to purge checkpoints' folder
+python -m tools.purge_cp
+
+# This python command allows you to purge all files related to one model
 #   e.g  'python -m tools.purge_model mlp_100' => deletes all files related to mlp_100 model
-python -m tools.purge_model [model_name] # If you want to purge a model , you can launch:
+python -m tools.purge_model [model_name]
 
-# Testing
-#   e.g ''
-python -m unittest tests\test_scenarios.py # To test if the tuner works before training, you can launch the `test_scenarios.py` file with the `unittest` package from the root of the project.
+# This python command allows you to extract a zip in the root folder directly in the data folder
+#   e.g 'python -m tools.extract_dataset_zip plant-pathology-2020-fgvc7'
+python -m tools.extract_dataset_zip [zip_name_without_extension]
 
-# Documentation
-pydoc -b # To access the documentation of the project in your browser write from the root of the project:
+# This python command allows you to create an Anaconda environment from the requirements.txt file
+python -m tools.create_env [environment_name]
+
+# This python command allows you to delete an Anaconda environment
+python -m tools.remove_env [environment_name]
+
+### TESTING ###
+
+# This python command allows you to test if the scenarios contains valid models that can be trained
+python -m unittest tests\test_scenarios.py
+
+### DOCUMENTATION ###
+
+# This pydoc commands allows you to access documentation from your browser
+pydoc -b
 ```
-
-##### Performance
-
-It took X minutes and XX seconds to build and test current model configurations.
-
-![title](https://i.imgur.com/vI95AgZ.png)
-<small><small>Test result generated the XX, mm, YYYY </small></small>
 
 ### Team members
 
@@ -92,6 +108,17 @@ It took X minutes and XX seconds to build and test current model configurations.
 
 #### TODO
 
-- [ ] Test kaggle API in `playground.py`
-- [ ] Readme : Fill performance data
-- [ ] Finish README.mùd
+- [X] Test kaggle API
+- [X] Finish README.md
+- [ ] Add linear model
+- [ ] Add mlp
+- [ ] Add cnn model
+- [ ] Add resnet model
+- [ ] Add rnn model
+- [ ] Add introduction to Plant Pathology notebook
+- [ ] Add linear model text + experiences to Plant Pathology notebook
+- [ ] Add mlp model text + experiences to Plant Pathology notebook
+- [ ] Add cnn model text + experiences to Plant Pathology notebook
+- [ ] Add resnet model text + experiences to Plant Pathology notebook
+- [ ] Add rnn model text + experiences to Plant Pathology notebook
+- [ ] Add conclusion to Plant Pathology notebook
