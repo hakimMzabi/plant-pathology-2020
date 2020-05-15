@@ -8,8 +8,7 @@ The repository visibility is on private, and should not be shared before the end
 
 Here is a sample of the actual images in the dataset :
 
-![A sample of the Plant Pathology 2020 dataset](https://storage.googleapis.com/kaggle-competitions/kaggle/18648/logos/header.png)
-
+![A sample of the Plant Pathology 2020 dataset](https://i.imgur.com/RN0YphD.png)
 <sub><sup>Source: https://www.kaggle.com/c/plant-pathology-2020-fgvc7</sup></sub>
 
 ### Quick Start
