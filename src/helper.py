@@ -392,8 +392,10 @@ class Helper:
             except Exception:
                 pass
 
-    def fit(self, model, x=None, y=None, batch_size=None, epochs=1, validation_data=None,validation_steps=None, process_name=None,
-            hp_log_title=None, std_logs=True, earlystop=False, steps_per_epoch=None, steps_train=None,steps_valid=None,steps_test=None,acc_loss="std") -> object:
+    def fit(self, model, x=None, y=None, batch_size=None, epochs=1, validation_data=None, validation_steps=None,
+            process_name=None,
+            hp_log_title=None, std_logs=True, earlystop=False, steps_per_epoch=None, steps_train=None, steps_valid=None,
+            steps_test=None, acc_loss="cat") -> object:
         """
         Fit a model and adds a checkpoint to avoid losing data in case of failure.
         Checkpoint is also useful in case of overfitting
@@ -413,6 +415,14 @@ class Helper:
         from src.reporter import Reporter
 
         self.save_model(model, process_name)
+
+        v_acc_loss = None
+        if acc_loss == "cat":
+            v_acc_loss = 'categorical_accuracy'
+        elif acc_loss == "sparse":
+            v_acc_loss = 'sparse_categorical_accuracy'
+        elif acc_loss == "acc":
+            v_acc_loss = 'accuracy'
 
         x_test = None
         y_test = None
@@ -446,10 +456,13 @@ class Helper:
 
         tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=tensorboard_log_current_dir, histogram_freq=1)
 
-        earlystop_callback = tf.keras.callbacks.EarlyStopping(
-            monitor="val_sparse_categorical_accuracy", min_delta=0.0001,
-            patience=1
-        )
+        earlystop_callback = None
+        if earlystop:
+            earlystop_callback = tf.keras.callbacks.EarlyStopping(
+                monitor=f"val_{v_acc_loss}",
+                min_delta=0.0001,
+                patience=1
+            )
 
         callbacks = []
         if std_logs:
@@ -462,10 +475,10 @@ class Helper:
                         model_name=model_name,
                         log_file_path=log_file_path,
                         hp_log_title=hp_log_title,
-                        acc_loss=acc_loss
+                        acc_loss=v_acc_loss
                     )
                 )
-            elif x is not None and y is None and steps_valid:
+            elif x is not None and y is None:
                 callbacks.append(
                     Reporter(
                         x=x,
@@ -474,7 +487,7 @@ class Helper:
                         log_file_path=log_file_path,
                         hp_log_title=hp_log_title,
                         steps=steps_valid,
-                        acc_loss=acc_loss
+                        acc_loss=v_acc_loss
                     )
                 )
             else:

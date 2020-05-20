@@ -8,7 +8,7 @@ The repository visibility is on private, and should not be shared before the end
 
 Here is a sample of the actual images in the dataset :
 
-![A sample of the Plant Pathology 2020 dataset](https://i.imgur.com/RN0YphD.png)
+![A sample of the Plant Pathology 2020 dataset](https://i.imgur.com/jmEdFKq.png)
 <sub><sup>Source: https://www.kaggle.com/c/plant-pathology-2020-fgvc7</sup></sub>
 
 ### Quick Start
@@ -109,15 +109,10 @@ pydoc -b
 
 - [X] Test kaggle API
 - [X] Finish README.md
-- [ ] Add linear model
-- [ ] Add mlp
-- [ ] Add cnn model
-- [ ] Add resnet model
-- [ ] Add rnn model
-- [ ] Add introduction to Plant Pathology notebook
-- [ ] Add linear model text + experiences to Plant Pathology notebook
-- [ ] Add mlp model text + experiences to Plant Pathology notebook
-- [ ] Add cnn model text + experiences to Plant Pathology notebook
-- [ ] Add resnet model text + experiences to Plant Pathology notebook
-- [ ] Add rnn model text + experiences to Plant Pathology notebook
-- [ ] Add conclusion to Plant Pathology notebook
+- [X] Add introduction to Plant Pathology notebook
+- [ ] Add linear model + experiences to Plant Pathology notebook
+- [ ] Add mlp model + experiences to Plant Pathology notebook
+- [ ] Add cnn model + experiences to Plant Pathology notebook
+- [ ] Add resnet model + experiences to Plant Pathology notebook
+- [ ] Add rnn model + experiences to Plant Pathology notebook
+- [ ] Add general conclusion to Plant Pathology notebook

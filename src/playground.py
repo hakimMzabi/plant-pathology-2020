@@ -3,25 +3,34 @@ from src.plant_pathology import PlantPathology
 
 
 def launch_linear_model():
-    from src.models.processes.linear import create_model_pp
+    from src.models.processes.linear import create_model_pp_2
     helper = Helper()
     pp = PlantPathology()
-    # pp.plot_image(5)
+    pp.plot_image(10)
     x_train, y_train = pp.train_generator.next()
     x_test, y_test = pp.valid_generator.next()
-    model = create_model_pp()
-    helper.fit(
-        model, x_train, y_train, batch_size=1024, epochs=100, validation_data=(x_test, y_test), process_name="linear"
-    )
-
-    # helper.fit(
-    #     model=model,
-    #     process_name="linear_1",
-    #     x=pp.train_generator,
+    model = create_model_pp_2()
+    # model.fit_generator(
+    #     generator=pp.train_generator,
     #     steps_per_epoch=pp.step_train(),
     #     validation_data=pp.valid_generator,
     #     validation_steps=pp.step_valid(),
-    #     epochs=1
+    #     epochs=150
+    # )
+    helper.fit(
+        model=model,
+        x=pp.train_generator,
+        steps_per_epoch=pp.step_train(),
+        validation_data=pp.valid_generator,
+        validation_steps=pp.step_valid(),
+        process_name="linear",
+        acc_loss="acc", # mandatory, since default is cat_acc and doesn't work with that model,
+        earlystop=True, # add this to save some time
+        epochs=150
+    )
+    # helper.fit(
+    #     model, x_train, y_train, batch_size=512, epochs=100, validation_data=(x_test, y_test), process_name="linear",
+    #     acc_loss="acc"
     # )
 
 

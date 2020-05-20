@@ -139,7 +139,18 @@ def create_model_pp():
         loss=categorical_crossentropy,
         metrics=[categorical_accuracy]
     )
+    return model
 
+
+def create_model_pp_2():
+    model = Sequential()
+    model.add(Flatten(input_shape=(300, 300, 3)))
+    model.add(Dense(4, activation="softmax"))
+    model.compile(
+        loss=categorical_crossentropy,
+        optimizer="Adam",
+        metrics=['accuracy']
+    )
     return model
 
 

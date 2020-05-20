@@ -4,16 +4,12 @@ from src.helper import Helper
 
 class PlantPathology:
     """
-    Ease CIFAR-10 creation with indicated shape
+    Ease Plant Pathology dataset creation
     """
 
-    def __init__(self, dim=1):
+    def __init__(self):
         self.helper = Helper()
-        if 1 <= dim <= 3:
-            (self.train_generator, self.valid_generator,
-             self.test_generator) = self.helper.get_plant_pathology_prepared()
-        else:
-            raise Exception("Plant Pathology dataset couldn't be initialized with dims != 3 or != 1")
+        (self.train_generator, self.valid_generator, self.test_generator) = self.helper.get_plant_pathology_prepared()
 
     def plot_image(self, nb_of_images):
         sample_training, _ = next(self.train_generator)

@@ -52,9 +52,9 @@ class Reporter(Callback):
                     "acc : {} ; "
                     "vl : {} ; "
                     "vacc : {}\n"
-                    .format(self.epoch_iter, loss, acc, logs['loss'], logs['sparse_categorical_accuracy'] if self.acc_loss != "std" else logs['categorical_accuracy'],
+                    .format(self.epoch_iter, loss, acc, logs['loss'], logs[self.acc_loss],
                             logs['val_loss'],
-                            logs['val_sparse_categorical_accuracy'] if self.acc_loss != "std" else logs['val_categorical_accuracy'])
+                            logs[f'val_{self.acc_loss}'])
                     )
             f.close()
 
